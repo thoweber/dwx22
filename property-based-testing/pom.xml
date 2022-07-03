@@ -2,10 +2,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>guru.thomasweber.dwx22</groupId>
-	<artifactId>property-based.testing</artifactId>
+	<artifactId>property-based-testing</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>steuerid-generator</name>
 
 	<properties>
 		<java.version>11</java.version>
