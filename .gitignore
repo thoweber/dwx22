@@ -1,0 +1,8 @@
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+target/
+.settings/
+.project
+.classpath
+.idea
+.jqwik-database
