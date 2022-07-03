@@ -11,37 +11,40 @@ class MemberDiscountServiceTest {
     @Test
     void membersReceiveDiscountIfOrderAboveMinValue() {
         // given
-        User user = User.builder().member(true).build();
-        Order order = Order.builder().orderTotal(new BigDecimal("55.00")).build();
-        MemberDiscountService memberDiscountService = new MemberDiscountService();
+        /*
+         - User ist Member
+         - Order-Total ist 55.00
+         */
         // when
-        BigDecimal discount = memberDiscountService.computeMemberDiscount(order, user);
-        // then
-        assertEquals(new BigDecimal("5.50"), discount);
+        /* MemberDiscountService berechnet Discount */
+              // then
+        /* Discount entspricht 5.50 */
     }
 
     @Test
     void membersDoNotReceiveDiscountIfOrderBelowMinValue() {
         // given
-        User user = User.builder().member(true).build();
-        Order order = Order.builder().orderTotal(new BigDecimal("45.00")).build();
-        MemberDiscountService memberDiscountService = new MemberDiscountService();
+        /*
+         - User ist Member
+         - Order-Total ist 45.00
+         */
         // when
-        BigDecimal discount = memberDiscountService.computeMemberDiscount(order, user);
+        /* MemberDiscountService berechnet Discount */
         // then
-        assertEquals(BigDecimal.ZERO, discount);
+        /* Discount entspricht 0 */
     }
 
     @Test
     void nonMembersDoNotReceiveDiscountIfOrderAboveMinValue() {
         // given
-        User user = User.builder().member(false).build();
-        Order order = Order.builder().orderTotal(new BigDecimal("55.00")).build();
-        MemberDiscountService memberDiscountService = new MemberDiscountService();
+         /*
+         - User ist kein Member
+         - Order-Total ist 55.00
+         */
         // when
-        BigDecimal discount = memberDiscountService.computeMemberDiscount(order, user);
+        /* MemberDiscountService berechnet Discount */
         // then
-        assertEquals(BigDecimal.ZERO, discount);
+        /* Discount entspricht 0 */
     }
 
 }
