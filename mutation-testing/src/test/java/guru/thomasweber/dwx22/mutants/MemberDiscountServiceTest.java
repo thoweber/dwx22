@@ -11,40 +11,38 @@ class MemberDiscountServiceTest {
     @Test
     void membersReceiveDiscountIfOrderAboveMinValue() {
         // given
-        /*
-         - User ist Member
-         - Order-Total ist 55.00
-         */
+        User user = User.builder().member(true).build();
+        Order order = Order.builder().orderTotal(new BigDecimal("55.00")).build();
+        MemberDiscountService memberDiscountService = new MemberDiscountService();
         // when
-        /* MemberDiscountService berechnet Discount */
-              // then
-        /* Discount entspricht 5.50 */
+        BigDecimal discount = memberDiscountService.computeMemberDiscount(order, user);
+        // then
+        assertEquals(new BigDecimal("5.50"), discount);
     }
 
     @Test
     void membersDoNotReceiveDiscountIfOrderBelowMinValue() {
         // given
-        /*
-         - User ist Member
-         - Order-Total ist 45.00
-         */
+        User user = User.builder().member(true).build();
+        /* Prüfwert genau auf Grenzwert gelegt um den Mutanten zu töten */
+        Order order = Order.builder().orderTotal(new BigDecimal("50.00")).build();
+        MemberDiscountService memberDiscountService = new MemberDiscountService();
         // when
-        /* MemberDiscountService berechnet Discount */
+        BigDecimal discount = memberDiscountService.computeMemberDiscount(order, user);
         // then
-        /* Discount entspricht 0 */
+        assertEquals(BigDecimal.ZERO, discount);
     }
 
     @Test
     void nonMembersDoNotReceiveDiscountIfOrderAboveMinValue() {
         // given
-         /*
-         - User ist kein Member
-         - Order-Total ist 55.00
-         */
+        User user = User.builder().member(false).build();
+        Order order = Order.builder().orderTotal(new BigDecimal("55.00")).build();
+        MemberDiscountService memberDiscountService = new MemberDiscountService();
         // when
-        /* MemberDiscountService berechnet Discount */
+        BigDecimal discount = memberDiscountService.computeMemberDiscount(order, user);
         // then
-        /* Discount entspricht 0 */
+        assertEquals(BigDecimal.ZERO, discount);
     }
 
 }
