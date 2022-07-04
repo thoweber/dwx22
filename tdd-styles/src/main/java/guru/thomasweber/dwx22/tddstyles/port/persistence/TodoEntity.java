@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 @Table(name = "todo")
 @NoArgsConstructor
 @Builder
@@ -18,7 +19,7 @@ import java.util.UUID;
 public class TodoEntity implements Todo {
     @Id
     private UUID id;
-    @Temporal(TemporalType.DATE)
+    @Basic
     private LocalDate dueDate;
     @Basic
     private String name;
