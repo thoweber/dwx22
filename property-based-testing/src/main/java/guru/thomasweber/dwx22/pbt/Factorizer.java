@@ -11,9 +11,6 @@ public class Factorizer {
         if (SPECIAL_CASES.contains(number)) {
             return List.of(number);
         }
-        if (number == Integer.MIN_VALUE) {
-            throw new IllegalArgumentException();
-        }
         if (number < 0) {
             var factors = new ArrayList<Integer>();
             factors.add(-1);
