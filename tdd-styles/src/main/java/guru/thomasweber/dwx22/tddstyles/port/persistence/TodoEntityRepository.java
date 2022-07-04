@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface TodoEntityRepository extends CrudRepository<TodoEntity, UUID> {
+public interface TodoEntityRepository extends CrudRepository<TodoEntity, String> {
 
 }
