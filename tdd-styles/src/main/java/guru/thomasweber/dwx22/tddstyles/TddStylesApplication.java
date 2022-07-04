@@ -6,8 +6,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("guru.thomasweber.dwx22.tddstyles.port.persistence.*")
-@EntityScan("guru.thomasweber.dwx22.tddstyles.port.persistence.*")
 public class TddStylesApplication {
 
 	public static void main(String[] args) {
