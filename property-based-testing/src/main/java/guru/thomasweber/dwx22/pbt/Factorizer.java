@@ -35,7 +35,13 @@ public class Factorizer {
                 number /= i;
             }
         }
-
+        /*
+         durch property-based Test gefundener Fehler: wenn hier ein Rest ungleich 1 überig bleibt, liegt eine
+         weitere Primzahl vor
+         */
+        if (number!=1) {
+            factors.add(number);
+        }
         return factors;
     }
 }
