@@ -16,15 +16,20 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
 @Setter
+@ToString
 public class TodoEntity implements Todo {
     @Id
-    private UUID id;
+    private String id;
     @Basic
     private LocalDate dueDate;
     @Basic
     private String name;
     @Enumerated(EnumType.STRING)
     private State state;
+
+    public UUID getId() {
+        return UUID.fromString(id);
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -44,5 +49,13 @@ public class TodoEntity implements Todo {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    // overwrite part of the generated builder
+    public static class TodoEntityBuilder {
+        public TodoEntityBuilder id(UUID id) {
+            this.id = id.toString();
+            return this;
+        }
     }
 }
